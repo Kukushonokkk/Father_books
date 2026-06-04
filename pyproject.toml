@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "book-sales-bot"
+version = "0.1.0"
+description = "Telegram bot for automated book sales and consent-based funnel."
+requires-python = ">=3.11"
+dependencies = [
+  "aiogram>=3.16,<4",
+  "aiohttp>=3.9,<4",
+  "python-dotenv>=1.0,<2"
+]
+
+[project.scripts]
+book-sales-bot = "book_sales_bot.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
