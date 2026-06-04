@@ -51,6 +51,18 @@ BOOK2_FILE_PATH=книга 2.pdf
 python -m book_sales_bot.main
 ```
 
+## Docker-Деплой
+
+В проекте есть `Dockerfile`. Стартовая команда внутри контейнера:
+
+```bash
+python -m book_sales_bot.main
+```
+
+Для деплоя задайте переменные окружения в панели хостинга, а не в репозитории: `BOT_TOKEN`, `ADMIN_IDS`, `PAYMENT_MODE`, `YOOMONEY_CARD_NUMBER`, `AI_API_KEY`, `AI_BASE_URL`, `AI_MODEL`.
+
+PDF-книги не коммитятся в GitHub и исключены из Docker image. Для продакшена нужно либо загрузить `книга 1.pdf` и `книга 2.pdf` в файловое хранилище хостинга и указать `BOOK1_FILE_PATH`/`BOOK2_FILE_PATH`, либо временно добавить файлы в image осознанно, если хостинг закрытый и это приемлемо для вас.
+
 ## Если нет подключения к Telegram API
 
 Ошибка вида `Cannot connect to host api.telegram.org:443` означает, что Windows или сеть не может открыть соединение с Telegram API. Проверьте:

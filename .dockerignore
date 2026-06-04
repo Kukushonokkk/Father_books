@@ -1,0 +1,16 @@
+.git
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.codex_tmp
+data/*.sqlite3
+data/*.sqlite3-*
+logs
+.env
+книга 1.pdf
+книга 2.pdf
+

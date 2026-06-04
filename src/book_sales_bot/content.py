@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from importlib import resources
 from pathlib import Path
 from typing import Any
 
@@ -21,7 +22,11 @@ class ContentStore:
 
     @classmethod
     def load(cls, path: Path) -> "ContentStore":
-        return cls(json.loads(path.read_text(encoding="utf-8")))
+        if path.exists():
+            return cls(json.loads(path.read_text(encoding="utf-8")))
+
+        fallback = resources.files("book_sales_bot").joinpath("default_content.json")
+        return cls(json.loads(fallback.read_text(encoding="utf-8")))
 
     @property
     def products(self) -> dict[str, Any]:
